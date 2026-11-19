@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087f5b">
+<meta name="description" content="Calcula precios, controla ventas y organiza tu pequeño negocio con VendeMás.">
+<link rel="manifest" href="manifest.json">
+<title>VendeMás — Tu negocio, más claro</title>
+<style>
+:root{--green:#087f5b;--green2:#0b9b70;--ink:#172b25;--muted:#71817a;--bg:#f4f7f5;--card:#fff;--line:#e5ece8;--red:#c64b4b;--shadow:0 8px 28px rgba(17,54,39,.07)}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:88px}
+button,input,select{font:inherit}button{cursor:pointer}
+.top{background:linear-gradient(135deg,#076b4d,#0c9a6d);color:white;padding:22px 18px 26px;border-radius:0 0 25px 25px}
+.topline{display:flex;align-items:center;justify-content:space-between;max-width:760px;margin:auto}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.5px}
+.logo{width:38px;height:38px;border-radius:13px;background:#ffffff24;display:grid;place-items:center;font-size:22px}
+.top p{margin:16px auto 0;max-width:760px;color:#d8f3e8;font-size:14px}
+.wrap{max-width:760px;margin:0 auto;padding:18px}
+.page{display:none}.page.active{display:block}
+.sectionhead{display:flex;justify-content:space-between;align-items:center;margin:4px 0 13px}
+h2{font-size:19px;margin:0;letter-spacing:-.4px}h3{font-size:15px;margin:0 0 12px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px;box-shadow:var(--shadow)}
+.muted{color:var(--muted);font-size:13px}.field{margin:13px 0}.field label{display:block;font-size:12px;color:#60736a;font-weight:700;margin-bottom:7px}
+input,select{width:100%;border:1px solid #dce6e0;border-radius:12px;padding:13px 12px;background:#fbfdfc;color:var(--ink);outline:none}
+input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #087f5b18}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:750;background:var(--green);color:white;width:100%}
+.btn.secondary{background:#e8f4ef;color:var(--green)}.btn.small{width:auto;padding:9px 12px;font-size:12px}
+.result{background:#eaf7f1;border:1px solid #cdebdc;border-radius:16px;padding:16px;margin-top:14px}
+.result .big{font-size:29px;letter-spacing:-1px;font-weight:850;color:#087f5b;margin:5px 0}
+.resultrow{display:flex;justify-content:space-between;font-size:13px;padding:7px 0;border-bottom:1px solid #d6eee2}.resultrow:last-child{border:0}
+.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px}
+.stat .value{font-size:21px;font-weight:800;margin-top:7px;letter-spacing:-.5px}
+.toolgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.tool{border:1px solid var(--line);background:white;border-radius:16px;padding:15px;text-align:left;min-height:112px;color:var(--ink)}
+.tool .ico{font-size:23px}.tool strong{display:block;margin:8px 0 3px}.tool span:last-child{font-size:12px;color:var(--muted)}
+.listitem{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);gap:10px}
+.listitem:last-child{border:0}.empty{text-align:center;padding:22px 10px;color:var(--muted);font-size:13px}
+.nav{position:fixed;bottom:0;left:0;right:0;background:#ffffffed;backdrop-filter:blur(12px);border-top:1px solid var(--line);display:flex;justify-content:center;z-index:10;padding:8px 5px calc(8px + env(safe-area-inset-bottom))}
+.navinner{display:flex;width:100%;max-width:600px;justify-content:space-around}
+.nav button{background:none;border:0;color:#7b8982;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px;padding:5px 10px}
+.nav button span{font-size:20px}.nav button.active{color:var(--green)}
+.note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}
+.toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:#183b2d;color:white;padding:11px 16px;border-radius:12px;font-size:13px;display:none;z-index:20}
+.danger{color:var(--red);background:#fff0f0;border:0;border-radius:9px;padding:8px 10px;font-size:12px}
+@media(min-width:620px){.top{padding-top:28px}.wrap{padding:24px}.toolgrid{grid-template-columns:repeat(3,1fr)}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="topline"><div class="brand"><div class="logo">↗</div>VendeMás</div><div style="font-size:12px;color:#d8f3e8">Tu negocio, más claro</div></div>
+ <p>Calculá mejor. Vendé con confianza. Hacé crecer tu negocio.</p>
+</header>
+<main class="wrap">
+<section id="inicio" class="page active">
+ <div class="sectionhead"><h2>Hola, emprendedor 👋</h2><span class="muted" id="today"></span></div>
+ <div class="stats">
+  <div class="stat"><div class="muted">Ventas registradas</div><div class="value" id="homeSales">$0</div></div>
+  <div class="stat"><div class="muted">Ganancia estimada</div><div class="value" id="homeProfit">$0</div></div>
+ </div>
+ <div class="card" style="margin-top:14px">
+  <h3>Calculá cuánto cobrar</h3>
+  <p class="muted">Ingresá tus costos y el margen que querés ganar.</p>
+  <div class="grid2">
+   <div class="field"><label for="cost">Costo del producto</label><input id="cost" type="number" min="0" step="0.01" placeholder="10000"></div>
+   <div class="field"><label for="extra">Otros gastos</label><input id="extra" type="number" min="0" step="0.01" placeholder="1500"></div>
+   <div class="field"><label for="commission">Comisión de venta (%)</label><input id="commission" type="number" min="0" max="99" step="0.1" value="0"></div>
+   <div class="field"><label for="margin">Margen deseado (%)</label><input id="margin" type="number" min="0" max="99" step="0.1" value="30"></div>
+  </div>
+  <button class="btn" id="calcBtn">Calcular precio recomendado</button>
+  <div id="calcResult" class="result" hidden>
+   <div class="muted">Precio de venta recomendado</div><div class="big" id="priceOut">$0</div>
+   <div class="resultrow"><span>Costo total</span><strong id="totalCostOut"></strong></div>
+   <div class="resultrow"><span>Comisión estimada</span><strong id="commissionOut"></strong></div>
+   <div class="resultrow"><span>Ganancia estimada</span><strong id="profitOut"></strong></div>
+   <div class="resultrow"><span>Margen sobre la venta</span><strong id="marginOut"></strong></div>
+  </div>
+  <p class="note">El margen es la ganancia como porcentaje del precio final. La comisión se calcula sobre el precio de venta. Resultado orientativo: revisá impuestos y costos particulares de tu actividad.</p>
+ </div>
+ <div class="sectionhead"><h2>Herramientas</h2></div>
+ <div class="toolgrid">
+  <button class="tool" data-go="ventas"><span class="ico">🧾</span><strong>Registrar venta</strong><span>Guardá tus ingresos</span></button>
+  <button class="tool" data-go="gastos"><span class="ico">💸</span><strong>Registrar gasto</strong><span>Controlá egresos</span></button>
+  <button class="tool" data-go="productos"><span class="ico">📦</span><strong>Mis productos</strong><span>Organizá tu catálogo</span></button>
+  <button class="tool" data-go="resumen"><span class="ico">📊</span><strong>Mi resumen</strong><span>Revisá tus números</span></button>
+ </div>
+</section>
+<section id="ventas" class="page">
+ <div class="sectionhead"><h2>Registrar una venta</h2></div>
+ <div class="card">
+  <div class="field"><label>Descripción</label><input id="saleName" placeholder="Ej. 2 remeras"></div>
+  <div class="grid2"><div class="field"><label>Importe de venta</label><input id="saleAmount" type="number" min="0" placeholder="15000"></div><div class="field"><label>Costo asociado</label><input id="saleCost" type="number" min="0" placeholder="8000"></div></div>
+  <button class="btn" id="addSale">Guardar venta</button>
+ </div>
+ <div class="card"><h3>Últimas ventas</h3><div id="salesList" class="empty">Todavía no registraste ventas.</div></div>
+</section>
+<section id="gastos" class="page">
+ <div class="sectionhead"><h2>Registrar un gasto</h2></div>
+ <div class="card">
+  <div class="field"><label>Descripción</label><input id="expenseName" placeholder="Ej. Envío de mercadería"></div>
+  <div class="field"><label>Importe</label><input id="expenseAmount" type="number" min="0" placeholder="2500"></div>
+  <button class="btn" id="addExpense">Guardar gasto</button>
+ </div>
+ <div class="card"><h3>Últimos gastos</h3><div id="expensesList" class="empty">Todavía no registraste gastos.</div></div>
+</section>
+<section id="productos" class="page">
+ <div class="sectionhead"><h2>Mis productos</h2></div>
+ <div class="card">
+  <div class="field"><label>Nombre del producto</label><input id="productName" placeholder="Ej. Taza personalizada"></div>
+  <div class="grid2"><div class="field"><label>Costo</label><input id="productCost" type="number" min="0" placeholder="3000"></div><div class="field"><label>Precio de venta</label><input id="productPrice" type="number" min="0" placeholder="6500"></div></div>
+  <button class="btn" id="addProduct">Agregar producto</button>
+ </div>
+ <div class="card"><h3>Catálogo</h3><div id="productsList" class="empty">Todavía no agregaste productos.</div></div>
+</section>
+<section id="resumen" class="page">
+ <div class="sectionhead"><h2>Resumen del negocio</h2></div>
+ <div class="stats">
+  <div class="stat"><div class="muted">Ingresos por ventas</div><div class="value" id="sumSales">$0</div></div>
+  <div class="stat"><div class="muted">Costos de ventas</div><div class="value" id="sumCosts">$0</div></div>
+  <div class="stat"><div class="muted">Gastos registrados</div><div class="value" id="sumExpenses">$0</div></div>
+  <div class="stat"><div class="muted">Resultado estimado</div><div class="value" id="sumProfit">$0</div></div>
+ </div>
+ <div class="card" style="margin-top:14px"><h3>Configuración</h3><div class="field"><label>Moneda</label><select id="currency"><option value="ARS">Peso argentino (ARS)</option><option value="MXN">Peso mexicano (MXN)</option><option value="COP">Peso colombiano (COP)</option><option value="CLP">Peso chileno (CLP)</option><option value="PEN">Sol peruano (PEN)</option><option value="UYU">Peso uruguayo (UYU)</option><option value="BRL">Real brasileño (BRL)</option><option value="USD">Dólar estadounidense (USD)</option><option value="BOB">Boliviano (BOB)</option><option value="PYG">Guaraní paraguayo (PYG)</option><option value="CRC">Colón costarricense (CRC)</option><option value="GTQ">Quetzal guatemalteco (GTQ)</option></select></div><p class="note">Tus datos se guardan solamente en este dispositivo y navegador. Si borrás los datos del navegador o cambiás de teléfono, podrías perderlos. Esta versión no sincroniza ni realiza copias de seguridad.</p></div>
+</section>
+</main>
+<nav class="nav"><div class="navinner">
+ <button class="active" data-go="inicio"><span>⌂</span>Inicio</button>
+ <button data-go="ventas"><span>＋</span>Ventas</button>
+ <button data-go="gastos"><span>−</span>Gastos</button>
+ <button data-go="productos"><span>▦</span>Productos</button>
+ <button data-go="resumen"><span>◷</span>Resumen</button>
+</div></nav>
+<div class="toast" id="toast"></div>
+<script>
+const $=id=>document.getElementById(id);
+const defaults={sales:[],expenses:[],products:[],currency:"ARS"};
+let data;
+try{data={...defaults,...JSON.parse(localStorage.getItem("vendemas-data")||"{}")}}catch(e){data={...defaults}}
+function save(){localStorage.setItem("vendemas-data",JSON.stringify(data));render()}
+function money(n){return new Intl.NumberFormat("es",{style:"currency",currency:data.currency,maximumFractionDigits:2}).format(Number(n)||0)}
+function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";setTimeout(()=>$("toast").style.display="none",2200)}
+function go(page){document.querySelectorAll(".page").forEach(p=>p.classList.toggle("active",p.id===page));document.querySelectorAll("[data-go]").forEach(b=>b.classList.toggle("active",b.dataset.go===page));window.scrollTo({top:0,behavior:"smooth"});render()}
+document.querySelectorAll("[data-go]").forEach(b=>b.addEventListener("click",()=>go(b.dataset.go)));
+$("calcBtn").addEventListener("click",()=>{
+ const c=Number($("cost").value),e=Number($("extra").value)||0,fee=Number($("commission").value)||0,m=Number($("margin").value)||0;
+ if(!Number.isFinite(c)||c<=0||e<0||fee<0||m<0||fee+m>=100){toast("Revisá los valores. Comisión + margen deben ser menores al 100%.");return}
+ const total=c+e,price=total/(1-(fee+m)/100),commission=price*fee/100,profit=price-total-commission;
+ $("priceOut").textContent=money(price);$("totalCostOut").textContent=money(total);$("commissionOut").textContent=money(commission);$("profitOut").textContent=money(profit);$("marginOut").textContent=(profit/price*100).toFixed(1)+"%";$("calcResult").hidden=false;
+});
+$("addSale").addEventListener("click",()=>{let name=$("saleName").value.trim(),amount=Number($("saleAmount").value),cost=Number($("saleCost").value)||0;if(!name||amount<=0||cost<0){toast("Completá descripción e importe válido.");return}data.sales.unshift({id:Date.now(),name,amount,cost,date:new Date().toISOString()});$("saleName").value=$("saleAmount").value=$("saleCost").value="";save();toast("Venta guardada.")});
+$("addExpense").addEventListener("click",()=>{let name=$("expenseName").value.trim(),amount=Number($("expenseAmount").value);if(!name||amount<=0){toast("Completá descripción e importe válido.");return}data.expenses.unshift({id:Date.now(),name,amount,date:new Date().toISOString()});$("expenseName").value=$("expenseAmount").value="";save();toast("Gasto guardado.")});
+$("addProduct").addEventListener("click",()=>{let name=$("productName").value.trim(),cost=Number($("productCost").value),price=Number($("productPrice").value);if(!name||cost<0||price<=0){toast("Completá el producto y sus importes.");return}data.products.unshift({id:Date.now(),name,cost,price});$("productName").value=$("productCost").value=$("productPrice").value="";save();toast("Producto agregado.")});
+$("currency").addEventListener("change",e=>{data.currency=e.target.value;save();toast("Moneda actualizada.")});
+function listHTML(items,type){if(!items.length)return '<div class="empty">Todavía no hay registros.</div>';return items.slice(0,30).map(x=>`<div class="listitem"><div><strong>${esc(x.name)}</strong><div class="muted">${x.date?new Date(x.date).toLocaleDateString("es"):"Producto"}</div></div><div style="text-align:right"><strong>${money(type==="sales"?x.amount:type==="expenses"?x.amount:x.price)}</strong><div class="muted">${type==="sales"?"Costo: "+money(x.cost):type==="products"?"Costo: "+money(x.cost):""}</div></div><button class="danger" data-delete="${type}:${x.id}">Quitar</button></div>`).join("")}
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))}
+function render(){
+ const sales=data.sales.reduce((a,x)=>a+x.amount,0),costs=data.sales.reduce((a,x)=>a+x.cost,0),expenses=data.expenses.reduce((a,x)=>a+x.amount,0),profit=sales-costs-expenses;
+ $("homeSales").textContent=money(sales);$("homeProfit").textContent=money(profit);
+ $("sumSales").textContent=money(sales);$("sumCosts").textContent=money(costs);$("sumExpenses").textContent=money(expenses);$("sumProfit").textContent=money(profit);
+ $("salesList").innerHTML=listHTML(data.sales,"sales");$("expensesList").innerHTML=listHTML(data.expenses,"expenses");$("productsList").innerHTML=listHTML(data.products,"products");
+ $("currency").value=data.currency;
+ document.querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",()=>{let [type,id]=b.dataset.delete.split(":");data[type]=data[type].filter(x=>String(x.id)!==id);save();toast("Registro eliminado.")}));
+}
+$("today").textContent=new Date().toLocaleDateString("es",{day:"numeric",month:"short"});
+render();
+if("serviceWorker" in navigator && location.protocol.startsWith("http")){window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}))}
+</script>
+</body></html>
