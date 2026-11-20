@@ -3,15 +3,17 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#087f5b">
+<meta name="theme-color" content="#075f46">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <meta name="description" content="Gestioná ventas, servicios, productos e inventario con VendeMás.">
 <link rel="manifest" href="manifest.json">
-<title>VendeMás 2.0 — Tu negocio, más claro</title>
+<title>VendeMás 2.1 — Tu negocio, más claro</title>
 <style>
-:root{--green:#087f5b;--green2:#0b9b70;--ink:#172b25;--muted:#71817a;--bg:#f4f7f5;--card:#fff;--line:#e5ece8;--red:#c64b4b;--amber:#a66b08;--shadow:0 8px 28px rgba(17,54,39,.07)}
+:root{--green:#087f5b;--green2:#0b9b70;--ink:#172b25;--muted:#71817a;--bg:#f2f6f3;--card:#fff;--line:#e3ebe6;--red:#c64b4b;--amber:#a66b08;--shadow:0 10px 30px rgba(17,54,39,.065)}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;padding-bottom:88px}
 button,input,select{font:inherit}button{cursor:pointer}
-.top{background:linear-gradient(135deg,#076b4d,#0c9a6d);color:white;padding:22px 18px 26px;border-radius:0 0 25px 25px}
+.top{background:radial-gradient(circle at 90% 0%,#25a879 0,transparent 35%),linear-gradient(135deg,#064f3b,#0b8b63);color:white;padding:24px 18px 29px;border-radius:0 0 28px 28px;box-shadow:0 12px 28px rgba(6,79,59,.16)}
 .topline{display:flex;align-items:center;justify-content:space-between;max-width:820px;margin:auto}
 .brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:21px;letter-spacing:-.5px}
 .logo{width:38px;height:38px;border-radius:13px;background:#ffffff24;display:grid;place-items:center;font-size:22px}
@@ -19,16 +21,16 @@ button,input,select{font:inherit}button{cursor:pointer}
 .wrap{max-width:820px;margin:0 auto;padding:18px}.page{display:none}.page.active{display:block}
 .sectionhead{display:flex;justify-content:space-between;align-items:center;margin:4px 0 13px;gap:10px}
 h2{font-size:19px;margin:0;letter-spacing:-.4px}h3{font-size:15px;margin:0 0 12px}
-.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:17px;margin-bottom:14px;box-shadow:var(--shadow)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px;margin-bottom:14px;box-shadow:var(--shadow)}
 .muted{color:var(--muted);font-size:13px}.field{margin:13px 0}.field label{display:block;font-size:12px;color:#60736a;font-weight:700;margin-bottom:7px}
 input,select{width:100%;border:1px solid #dce6e0;border-radius:12px;padding:13px 12px;background:#fbfdfc;color:var(--ink);outline:none}
 input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #087f5b18}
-.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:12px;padding:13px 16px;font-weight:750;background:var(--green);color:white;width:100%}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:10px}.btn{border:0;border-radius:13px;padding:13px 16px;font-weight:750;background:linear-gradient(135deg,var(--green),var(--green2));color:white;width:100%;box-shadow:0 5px 12px rgba(8,127,91,.13)}
 .btn.secondary{background:#e8f4ef;color:var(--green)}.btn.small{width:auto;padding:9px 12px;font-size:12px}
 .btn.danger{background:#fff0f0;color:var(--red)}.stats{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.stat{background:white;border:1px solid var(--line);border-radius:16px;padding:14px}.stat .value{font-size:20px;font-weight:800;margin-top:7px;letter-spacing:-.5px;overflow-wrap:anywhere}
+.stat{background:white;border:1px solid var(--line);border-radius:18px;padding:15px;box-shadow:0 5px 18px rgba(17,54,39,.035)}.stat .value{font-size:20px;font-weight:800;margin-top:7px;letter-spacing:-.5px;overflow-wrap:anywhere}
 .toolgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
-.tool{border:1px solid var(--line);background:white;border-radius:16px;padding:15px;text-align:left;min-height:105px;color:var(--ink)}
+.tool{border:1px solid var(--line);background:linear-gradient(160deg,#fff,#f9fcfa);border-radius:18px;padding:16px;text-align:left;min-height:110px;color:var(--ink);box-shadow:0 5px 16px rgba(17,54,39,.035)}
 .tool .ico{font-size:23px}.tool strong{display:block;margin:8px 0 3px}.tool span:last-child{font-size:12px;color:var(--muted)}
 .listitem{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid var(--line);gap:10px}
 .listitem:last-child{border:0}.empty{text-align:center;padding:22px 10px;color:var(--muted);font-size:13px}
@@ -36,6 +38,11 @@ input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px #087f5b1
 .navinner{display:flex;width:100%;max-width:650px;justify-content:space-around}
 .nav button{background:none;border:0;color:#7b8982;font-size:10px;font-weight:700;display:flex;flex-direction:column;align-items:center;gap:4px;padding:5px 8px}
 .nav button span{font-size:20px}.nav button.active{color:var(--green)}
+.nav{box-shadow:0 -8px 24px rgba(18,52,38,.055)}
+.chart{display:flex;align-items:end;gap:8px;height:132px;padding:12px 4px 2px}.chartbar{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:end;align-items:center;height:100%;gap:6px}.chartbar i{display:block;width:100%;max-width:34px;min-height:3px;border-radius:8px 8px 3px 3px;background:linear-gradient(180deg,#24ae7c,#087f5b)}.chartbar small{font-size:10px;color:var(--muted)}.chartbar b{font-size:9px;color:var(--muted);font-weight:600;white-space:nowrap}
+.header-business{font-size:11px;color:#d8f3e8;margin-top:3px}
+.actionrow{display:flex;gap:8px;flex-wrap:wrap}.actionrow .btn{flex:1;min-width:130px}
+@media(max-width:380px){.nav button{padding:5px 5px;font-size:9px}.nav button span{font-size:18px}.stat .value{font-size:18px}}
 .note{font-size:11px;color:var(--muted);line-height:1.5;margin-top:10px}
 .toast{position:fixed;bottom:92px;left:50%;transform:translateX(-50%);background:#183b2d;color:white;padding:11px 16px;border-radius:12px;font-size:13px;display:none;z-index:20;max-width:90%;text-align:center}
 .dangerText{color:var(--red)}.pill{font-size:11px;padding:4px 8px;border-radius:99px;background:#e8f4ef;color:var(--green);white-space:nowrap}
@@ -46,7 +53,7 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 </style>
 </head>
 <body>
-<header class="top"><div class="topline"><div class="brand"><div class="logo">↗</div>VendeMás <span class="pill">2.0</span></div><div style="font-size:12px;color:#d8f3e8">Tu negocio, más claro</div></div><p>Productos y servicios: organizá, vendé y controlá tu negocio.</p></header>
+<header class="top"><div class="topline"><div class="brand"><div class="logo">↗</div><div>VendeMás <span class="pill">2.1</span><div class="header-business" id="headerBusiness">Tu negocio, más claro</div></div></div><div style="font-size:12px;color:#d8f3e8">Panel de gestión</div></div><p>Productos y servicios: organizá, vendé y controlá tu negocio.</p></header>
 <main class="wrap">
 <section id="inicio" class="page active">
  <div class="sectionhead"><h2>Hola, emprendedor 👋</h2><span class="muted" id="today"></span></div>
@@ -74,13 +81,16 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
   <button class="tool" data-go="resumen"><span class="ico">📊</span><strong>Panel del negocio</strong><span>Revisá tus números</span></button>
   <button class="tool" data-go="respaldo"><span class="ico">🛡️</span><strong>Copia de seguridad</strong><span>Exportar o restaurar datos</span></button>
  </div>
- <div class="card" style="margin-top:14px"><h3>Alertas de inventario</h3><div id="stockAlerts" class="muted">No hay alertas.</div></div>
+ <div class="card" style="margin-top:14px"><div class="row"><h3 style="margin:0">Ventas de los últimos 7 días</h3><span class="pill">Actividad</span></div><div id="weeklyChart" class="chart"><div class="empty">Todavía no hay ventas.</div></div></div>
+ <div class="card"><h3>Alertas de inventario</h3><div id="stockAlerts" class="muted">No hay alertas.</div></div>
+ <div class="card"><h3>Últimos movimientos</h3><div id="recentActivity" class="muted">Todavía no hay movimientos.</div></div>
 </section>
 <section id="ventas" class="page">
  <div class="sectionhead"><h2>Registrar una venta</h2></div>
  <div class="card">
   <div class="field"><label>Producto o servicio del catálogo (opcional)</label><select id="saleProduct"><option value="">Venta libre / sin catálogo</option></select></div>
   <div class="field"><label>Descripción</label><input id="saleName" placeholder="Ej. 2 remeras / corte de cabello"></div>
+  <div class="field"><label>Cliente (opcional)</label><input id="saleCustomer" placeholder="Nombre del cliente"></div>
   <div class="grid2"><div class="field"><label>Importe de venta</label><input id="saleAmount" type="number" min="0" step="0.01" placeholder="15000"></div><div class="field"><label>Costo asociado</label><input id="saleCost" type="number" min="0" step="0.01" placeholder="8000"></div></div>
   <div class="field"><label>Cantidad (para productos con stock)</label><input id="saleQty" type="number" min="1" step="1" value="1"></div>
   <button class="btn" id="addSale">Guardar venta</button>
@@ -113,7 +123,8 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
  </div>
  <div class="card" style="margin-top:14px"><h3>Este mes</h3><div class="row"><span class="muted">Ingresos del mes</span><strong id="monthSales"></strong></div><hr><div class="row"><span class="muted">Resultado del mes</span><strong id="monthProfit"></strong></div></div>
  <div class="card"><h3>Actividad por tipo</h3><div class="row"><span>Ventas de productos</span><strong id="physicalSales"></strong></div><hr><div class="row"><span>Ventas de servicios</span><strong id="serviceSales"></strong></div></div>
- <div class="card"><h3>Configuración</h3><div class="field"><label>Moneda</label><select id="currency"><option value="ARS">Peso argentino (ARS)</option><option value="MXN">Peso mexicano (MXN)</option><option value="COP">Peso colombiano (COP)</option><option value="CLP">Peso chileno (CLP)</option><option value="PEN">Sol peruano (PEN)</option><option value="UYU">Peso uruguayo (UYU)</option><option value="BRL">Real brasileño (BRL)</option><option value="USD">Dólar estadounidense (USD)</option><option value="BOB">Boliviano (BOB)</option><option value="PYG">Guaraní paraguayo (PYG)</option><option value="CRC">Colón costarricense (CRC)</option><option value="GTQ">Quetzal guatemalteco (GTQ)</option></select></div><p class="note">Los datos permanecen en este navegador y dispositivo. Usá Copia de seguridad para descargar un respaldo antes de cambiar de teléfono o borrar datos.</p></div>
+ <div class="card"><h3>Configuración del negocio</h3><div class="field"><label>Nombre del negocio</label><input id="businessName" maxlength="40" placeholder="Ej. Mi emprendimiento"></div><div class="field"><label>Moneda</label><select id="currency"><option value="ARS">Peso argentino (ARS)</option><option value="MXN">Peso mexicano (MXN)</option><option value="COP">Peso colombiano (COP)</option><option value="CLP">Peso chileno (CLP)</option><option value="PEN">Sol peruano (PEN)</option><option value="UYU">Peso uruguayo (UYU)</option><option value="BRL">Real brasileño (BRL)</option><option value="USD">Dólar estadounidense (USD)</option><option value="BOB">Boliviano (BOB)</option><option value="PYG">Guaraní paraguayo (PYG)</option><option value="CRC">Colón costarricense (CRC)</option><option value="GTQ">Quetzal guatemalteco (GTQ)</option></select></div><p class="note">Los datos permanecen en este navegador y dispositivo. Usá Copia de seguridad para descargar un respaldo antes de cambiar de teléfono o borrar datos. Esta versión todavía no sincroniza entre dispositivos.</p></div>
+ <div class="card"><h3>Descargar reportes</h3><p class="muted">Exportá tus ventas y gastos para abrirlos en una hoja de cálculo.</p><div class="actionrow"><button class="btn secondary" id="exportSalesCsv">Exportar ventas CSV</button><button class="btn secondary" id="exportExpensesCsv">Exportar gastos CSV</button></div></div>
 </section>
 <section id="respaldo" class="page">
  <div class="sectionhead"><h2>Copia de seguridad</h2></div>
@@ -127,11 +138,12 @@ hr{border:0;border-top:1px solid var(--line);margin:12px 0}
 </div></nav><div class="toast" id="toast"></div>
 <script>
 const $=id=>document.getElementById(id);
-const defaults={sales:[],expenses:[],products:[],currency:"ARS"};
+const defaults={sales:[],expenses:[],products:[],currency:"ARS",businessName:""};
 let data;
 try{data={...defaults,...JSON.parse(localStorage.getItem("vendemas-data")||"{}")}}catch(e){data={...defaults}}
-data.sales=(data.sales||[]).map(x=>({...x,kind:x.kind||"legacy"}));
+data.sales=(data.sales||[]).map(x=>({...x,kind:x.kind||"legacy",customer:x.customer||""}));
 data.products=(data.products||[]).map(x=>({...x,type:x.type||"product",stock:Number.isFinite(Number(x.stock))?Number(x.stock):0,minStock:Number.isFinite(Number(x.minStock))?Number(x.minStock):2}));
+data.businessName=data.businessName||"";
 function save(){localStorage.setItem("vendemas-data",JSON.stringify(data));render()}
 function money(n){try{return new Intl.NumberFormat("es",{style:"currency",currency:data.currency,maximumFractionDigits:2}).format(Number(n)||0)}catch(e){return (Number(n)||0).toFixed(2)+" "+data.currency}}
 function toast(msg){$("toast").textContent=msg;$("toast").style.display="block";clearTimeout(window._toastTimer);window._toastTimer=setTimeout(()=>$("toast").style.display="none",2500)}
@@ -141,11 +153,11 @@ function esc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&l
 $("calcBtn").addEventListener("click",()=>{const c=Number($("cost").value),e=Number($("extra").value)||0,fee=Number($("commission").value)||0,m=Number($("margin").value)||0;if(!Number.isFinite(c)||c<=0||e<0||fee<0||m<0||fee+m>=100){toast("Revisá los valores: comisión y margen deben sumar menos de 100%.");return}const total=c+e,price=total/(1-(fee+m)/100),commission=price*fee/100,profit=price-total-commission;$("priceOut").textContent=money(price);$("calcDetails").textContent=`Costo total: ${money(total)} · Comisión: ${money(commission)} · Ganancia estimada: ${money(profit)}`;$("calcResult").hidden=false});
 $("productType").addEventListener("change",()=>{$("stockFields").style.display=$("productType").value==="product"?"grid":"none"});
 $("saleProduct").addEventListener("change",()=>{const p=data.products.find(x=>String(x.id)===$("saleProduct").value);if(!p)return;$("saleName").value=p.name;$("saleAmount").value=p.price;$("saleCost").value=p.cost;$("saleQty").value=1});
-$("addSale").addEventListener("click",()=>{const name=$("saleName").value.trim(),amount=Number($("saleAmount").value),cost=Number($("saleCost").value)||0,qty=Math.floor(Number($("saleQty").value)||1),p=data.products.find(x=>String(x.id)===$("saleProduct").value);if(!name||!Number.isFinite(amount)||amount<=0||cost<0||qty<1){toast("Completá descripción e importes válidos.");return}if(p&&p.type==="product"&&p.stock<qty){toast("No hay stock suficiente para esa cantidad.");return}if(p&&p.type==="product")p.stock-=qty;data.sales.unshift({id:Date.now(),name,amount,cost,date:new Date().toISOString(),kind:p?p.type:"other",productId:p?p.id:null,quantity:qty});$("saleProduct").value="";$("saleName").value=$("saleAmount").value=$("saleCost").value="";$("saleQty").value=1;save();toast("Venta guardada"+(p&&p.type==="product"?". Stock actualizado.":"."))});
+$("addSale").addEventListener("click",()=>{const name=$("saleName").value.trim(),amount=Number($("saleAmount").value),cost=Number($("saleCost").value)||0,qty=Math.floor(Number($("saleQty").value)||1),p=data.products.find(x=>String(x.id)===$("saleProduct").value);if(!name||!Number.isFinite(amount)||amount<=0||cost<0||qty<1){toast("Completá descripción e importes válidos.");return}if(p&&p.type==="product"&&p.stock<qty){toast("No hay stock suficiente para esa cantidad.");return}if(p&&p.type==="product")p.stock-=qty;data.sales.unshift({id:Date.now(),name,customer:$("saleCustomer").value.trim(),amount,cost,date:new Date().toISOString(),kind:p?p.type:"other",productId:p?p.id:null,quantity:qty});$("saleProduct").value="";$("saleName").value=$("saleCustomer").value=$("saleAmount").value=$("saleCost").value="";$("saleQty").value=1;save();toast("Venta guardada"+(p&&p.type==="product"?". Stock actualizado.":"."))});
 $("addExpense").addEventListener("click",()=>{const name=$("expenseName").value.trim(),amount=Number($("expenseAmount").value);if(!name||!Number.isFinite(amount)||amount<=0){toast("Completá descripción e importe válido.");return}data.expenses.unshift({id:Date.now(),name,amount,date:new Date().toISOString()});$("expenseName").value=$("expenseAmount").value="";save();toast("Gasto guardado.")});
 $("addProduct").addEventListener("click",()=>{const name=$("productName").value.trim(),cost=Number($("productCost").value),price=Number($("productPrice").value),type=$("productType").value,stock=Math.floor(Number($("productStock").value)||0),minStock=Math.floor(Number($("productMin").value)||0);if(!name||!Number.isFinite(cost)||cost<0||!Number.isFinite(price)||price<=0||stock<0||minStock<0){toast("Revisá nombre, costo, precio y stock.");return}data.products.unshift({id:Date.now(),name,cost,price,type,stock:type==="product"?stock:null,minStock:type==="product"?minStock:null});$("productName").value=$("productCost").value=$("productPrice").value="";$("productStock").value=0;$("productMin").value=2;save();toast(type==="product"?"Producto agregado.":"Servicio agregado.")});
 $("currency").addEventListener("change",e=>{data.currency=e.target.value;save();toast("Moneda actualizada.")});
-function filtered(items,id){const q=$(id).value.trim().toLocaleLowerCase();return items.filter(x=>String(x.name||"").toLocaleLowerCase().includes(q))}
+function filtered(items,id){const q=$(id).value.trim().toLocaleLowerCase();return items.filter(x=>(String(x.name||"")+" "+String(x.customer||"")).toLocaleLowerCase().includes(q))}
 function listHTML(items,type){if(!items.length)return '<div class="empty">No hay registros que mostrar.</div>';return items.slice(0,60).map(x=>{let detail="",amount=type==="products"?x.price:x.amount;if(type==="sales")detail=`${new Date(x.date).toLocaleDateString("es")} · Costo: ${money(x.cost)}${x.quantity>1?" · Cant.: "+x.quantity:""}`;if(type==="expenses")detail=new Date(x.date).toLocaleDateString("es");if(type==="products")detail=`${x.type==="service"?"Servicio":"Producto"} · Costo: ${money(x.cost)}${x.type==="product"?" · Stock: "+x.stock:""}`;let stockBadge=type==="products"&&x.type==="product"?(x.stock<=0?'<span class="pill red">Agotado</span>':x.stock<=x.minStock?'<span class="pill warn">Stock bajo</span>':'<span class="pill">Disponible</span>'):"";return `<div class="listitem"><div style="min-width:0"><strong>${esc(x.name)}</strong><div class="muted">${esc(detail)}</div>${stockBadge}</div><div style="text-align:right;flex-shrink:0"><strong>${money(amount)}</strong>${type==="products"?`<div class="muted">${x.type==="service"?"por servicio":"precio"}</div>`:""}</div><button class="btn danger small" data-delete="${type}:${x.id}">Quitar</button></div>`}).join("")}
 function render(){const sales=data.sales.reduce((a,x)=>a+(Number(x.amount)||0),0),costs=data.sales.reduce((a,x)=>a+(Number(x.cost)||0),0),expenses=data.expenses.reduce((a,x)=>a+(Number(x.amount)||0),0),profit=sales-costs-expenses,low=data.products.filter(x=>x.type==="product"&&x.stock<=x.minStock);$("homeSales").textContent=money(sales);$("homeProfit").textContent=money(profit);$("lowStockCount").textContent=low.length;$("catalogCount").textContent=data.products.length;$("sumSales").textContent=money(sales);$("sumCosts").textContent=money(costs);$("sumExpenses").textContent=money(expenses);$("sumProfit").textContent=money(profit);
 const now=new Date(),monthSales=data.sales.filter(x=>{const d=new Date(x.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()}).reduce((a,x)=>a+(Number(x.amount)||0),0),monthCosts=data.sales.filter(x=>{const d=new Date(x.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()}).reduce((a,x)=>a+(Number(x.cost)||0),0),monthExpenses=data.expenses.filter(x=>{const d=new Date(x.date);return d.getMonth()===now.getMonth()&&d.getFullYear()===now.getFullYear()}).reduce((a,x)=>a+(Number(x.amount)||0),0);$("monthSales").textContent=money(monthSales);$("monthProfit").textContent=money(monthSales-monthCosts-monthExpenses);
@@ -153,11 +165,19 @@ $("physicalSales").textContent=money(data.sales.filter(x=>x.kind==="product").re
 $("salesList").innerHTML=listHTML(filtered(data.sales,"salesSearch"),"sales");$("expensesList").innerHTML=listHTML(filtered(data.expenses,"expensesSearch"),"expenses");$("productsList").innerHTML=listHTML(filtered(data.products,"productsSearch"),"products");$("currency").value=data.currency;
 $("saleProduct").innerHTML='<option value="">Venta libre / sin catálogo</option>'+data.products.map(p=>`<option value="${p.id}">${esc(p.name)} — ${p.type==="service"?"Servicio":"Producto"} · ${money(p.price)}</option>`).join("");
 $("stockAlerts").innerHTML=low.length?low.map(p=>`<div class="row" style="padding:6px 0"><span>${esc(p.name)}</span><span class="pill ${p.stock===0?"red":"warn"}">${p.stock===0?"Agotado":p.stock+" disponibles"}</span></div>`).join(""):'<div class="muted">No hay alertas de stock.</div>';
+const days=[];for(let i=6;i>=0;i--){const d=new Date();d.setHours(0,0,0,0);d.setDate(d.getDate()-i);const key=d.toDateString();const total=data.sales.filter(x=>new Date(x.date).toDateString()===key).reduce((a,x)=>a+(Number(x.amount)||0),0);days.push({label:d.toLocaleDateString("es",{weekday:"short"}).replace(".",""),total})}const maxDay=Math.max(1,...days.map(x=>x.total));$("weeklyChart").innerHTML=days.some(x=>x.total>0)?days.map(x=>`<div class="chartbar"><b>${x.total?money(x.total):""}</b><i style="height:${Math.max(3,x.total/maxDay*78)}px"></i><small>${x.label}</small></div>`).join(""):'<div class="empty" style="width:100%">Todavía no hay ventas en los últimos 7 días.</div>';
+const recent=[...data.sales.map(x=>({...x,_type:"Venta"})),...data.expenses.map(x=>({...x,_type:"Gasto"}))].sort((a,b)=>new Date(b.date)-new Date(a.date)).slice(0,5);$("recentActivity").innerHTML=recent.length?recent.map(x=>`<div class="row" style="padding:8px 0;border-bottom:1px solid var(--line)"><span><strong>${esc(x.name)}</strong><div class="muted">${x._type} · ${new Date(x.date).toLocaleDateString("es")}</div></span><strong>${money(x.amount)}</strong></div>`).join(""):'<div class="muted">Todavía no hay movimientos.</div>';
+$("businessName").value=data.businessName;$("headerBusiness").textContent=data.businessName||"Tu negocio, más claro";
 document.querySelectorAll("[data-delete]").forEach(b=>b.addEventListener("click",()=>{const [type,id]=b.dataset.delete.split(":");if(type==="sales"){const sale=data.sales.find(x=>String(x.id)===id);if(sale&&sale.productId){const p=data.products.find(x=>String(x.id)===String(sale.productId));if(p&&p.type==="product")p.stock+=Number(sale.quantity)||1}}data[type]=data[type].filter(x=>String(x.id)!==id);save();toast(type==="sales"?"Venta eliminada. Si correspondía, el stock fue devuelto.":"Registro eliminado.")}));
 }
 ["salesSearch","expensesSearch","productsSearch"].forEach(id=>$(id).addEventListener("input",render));
-$("exportBtn").addEventListener("click",()=>{const payload={app:"VendeMás",version:2,exportedAt:new Date().toISOString(),data};const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="vendemas-respaldo-"+new Date().toISOString().slice(0,10)+".json";a.click();URL.revokeObjectURL(url);toast("Copia de seguridad descargada.")});
-$("importBtn").addEventListener("click",async()=>{const f=$("backupFile").files[0];if(!f){toast("Primero elegí un archivo de respaldo.");return}try{const parsed=JSON.parse(await f.text()),incoming=parsed.data||parsed;if(!Array.isArray(incoming.sales)||!Array.isArray(incoming.expenses)||!Array.isArray(incoming.products)){throw new Error("Formato inválido")}if(!confirm("Esto reemplazará los datos actuales. ¿Querés continuar?"))return;data={...defaults,...incoming};save();toast("Copia restaurada correctamente.")}catch(e){toast("No se pudo restaurar: el archivo no parece un respaldo válido.")}});
+$("businessName").addEventListener("change",e=>{data.businessName=e.target.value.trim();save();toast("Nombre del negocio actualizado.")});
+function csvCell(v){return '"'+String(v??"").replace(/"/g,'""')+'"'}
+function downloadCsv(filename,rows){const csv="\uFEFF"+rows.map(row=>row.map(csvCell).join(";")).join("\r\n"),blob=new Blob([csv],{type:"text/csv;charset=utf-8;"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download=filename;a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+$("exportSalesCsv").addEventListener("click",()=>{const rows=[["Fecha","Descripción","Cliente","Tipo","Cantidad","Importe","Costo"],...data.sales.map(x=>[new Date(x.date).toLocaleString("es"),x.name,x.customer||"",x.kind||"",x.quantity||1,x.amount,x.cost])];downloadCsv("vendemas-ventas-"+new Date().toISOString().slice(0,10)+".csv",rows);toast("Reporte de ventas descargado.")});
+$("exportExpensesCsv").addEventListener("click",()=>{const rows=[["Fecha","Descripción","Importe"],...data.expenses.map(x=>[new Date(x.date).toLocaleString("es"),x.name,x.amount])];downloadCsv("vendemas-gastos-"+new Date().toISOString().slice(0,10)+".csv",rows);toast("Reporte de gastos descargado.")});
+$("exportBtn").addEventListener("click",()=>{const payload={app:"VendeMás",version:3,exportedAt:new Date().toISOString(),data};const blob=new Blob([JSON.stringify(payload,null,2)],{type:"application/json"}),url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;a.download="vendemas-respaldo-"+new Date().toISOString().slice(0,10)+".json";a.click();URL.revokeObjectURL(url);toast("Copia de seguridad descargada.")});
+$("importBtn").addEventListener("click",async()=>{const f=$("backupFile").files[0];if(!f){toast("Primero elegí un archivo de respaldo.");return}try{const parsed=JSON.parse(await f.text()),incoming=parsed.data||parsed;if(!Array.isArray(incoming.sales)||!Array.isArray(incoming.expenses)||!Array.isArray(incoming.products)){throw new Error("Formato inválido")}if(!confirm("Esto reemplazará los datos actuales. ¿Querés continuar?"))return;data={...defaults,...incoming};data.sales=(data.sales||[]).map(x=>({...x,customer:x.customer||"",kind:x.kind||"legacy"}));data.products=(data.products||[]).map(x=>({...x,type:x.type||"product",stock:Number.isFinite(Number(x.stock))?Number(x.stock):0,minStock:Number.isFinite(Number(x.minStock))?Number(x.minStock):2}));save();toast("Copia restaurada correctamente.")}catch(e){toast("No se pudo restaurar: el archivo no parece un respaldo válido.")}});
 $("today").textContent=new Date().toLocaleDateString("es",{day:"numeric",month:"short"});render();
 if("serviceWorker" in navigator&&location.protocol.startsWith("http"))window.addEventListener("load",()=>navigator.serviceWorker.register("./sw.js").catch(()=>{}));
 </script></body></html>

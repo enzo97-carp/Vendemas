@@ -21,3 +21,13 @@ NOVEDADES
 
 IMPORTANTE
 Los datos siguen guardándose localmente en el navegador del dispositivo. No hay cuentas, sincronización en la nube ni servidor. Exportá copias de seguridad periódicas. La aplicación no emite facturas fiscales ni calcula impuestos.
+
+
+NOVEDADES 2.1
+- Panel visual con actividad de ventas de los últimos 7 días.
+- Registro opcional del nombre del cliente en cada venta.
+- Nombre del negocio configurable.
+- Reportes de ventas y gastos exportables a CSV.
+- Copias de seguridad compatibles con los datos de versiones anteriores.
+
+IMPORTANTE: los datos siguen guardándose localmente en el navegador y dispositivo. No hay cuentas, sincronización en la nube ni cobros integrados en esta versión. Descargá respaldos periódicamente.

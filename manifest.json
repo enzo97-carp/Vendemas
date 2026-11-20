@@ -1,7 +1,7 @@
 {
-  "name": "VendeMás 2.0",
+  "name": "VendeMás 2.1",
   "short_name": "VendeMás",
-  "description": "Gestión simple para negocios de productos y servicios.",
+  "description": "Gestioná ventas, clientes, productos, servicios e inventario desde tu celular.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
