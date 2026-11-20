@@ -1,23 +1,22 @@
 {
-  "name": "VendeMás — Tu negocio, más claro",
+  "name": "VendeMás 2.0",
   "short_name": "VendeMás",
+  "description": "Gestión simple para negocios de productos y servicios.",
   "start_url": "./",
+  "scope": "./",
   "display": "standalone",
   "background_color": "#f4f7f5",
   "theme_color": "#087f5b",
-  "description": "Calculá precios, controlá ventas y organizá tu negocio.",
   "icons": [
     {
-      "src": "./icon-192.png",
+      "src": "icon-192.png",
       "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     },
     {
-      "src": "./icon-512.png",
+      "src": "icon-512.png",
       "sizes": "512x512",
-      "type": "image/png",
-      "purpose": "any"
+      "type": "image/png"
     }
   ]
 }

@@ -1,22 +1,23 @@
-VENDEMAS — PRIMERA VERSION PWA
+VENDEMÁS 2.0
+=============
+Versión ampliada para negocios que venden productos físicos y ofrecen servicios.
 
-Archivos:
-- index.html: aplicación completa.
-- manifest.json: configuración instalable.
-- sw.js: caché básica para uso offline.
+INSTALACIÓN / PUBLICACIÓN
+1. Descomprimí el ZIP.
+2. Subí los seis archivos directamente a la raíz del repositorio GitHub (donde está index.html).
+3. Reemplazá los archivos anteriores cuando GitHub pregunte.
+4. Conservá GitHub Pages configurado en main / (root).
+5. Abrí el sitio y recargalo. Si ves la versión anterior, cerrá la PWA y abrila de nuevo o borrá la caché del sitio.
 
-PRUEBA LOCAL:
-Abrí index.html en un navegador para probar las funciones principales. La instalación PWA y el service worker requieren publicar el sitio mediante HTTPS (por ejemplo, GitHub Pages o Netlify).
+NOVEDADES
+- Catálogo con tipo Producto físico o Servicio.
+- Stock inicial y alerta de stock bajo para productos físicos.
+- Al registrar una venta desde el catálogo, completa precio y costo; descuenta stock para productos.
+- Al quitar una venta vinculada a un producto, devuelve las unidades al stock.
+- Búsqueda de ventas, gastos y catálogo.
+- Panel mensual y separación de ingresos por productos y servicios.
+- Exportación e importación de copias de seguridad JSON.
+- Conserva la estructura de datos local de la versión anterior.
 
-PUBLICACIÓN GRATUITA EN GITHUB PAGES:
-1. Crear una cuenta gratuita en github.com.
-2. Crear un repositorio público llamado vendemas.
-3. Subir los tres archivos (index.html, manifest.json y sw.js) a la raíz.
-4. En Settings > Pages, elegir Deploy from a branch, rama main y carpeta /(root).
-5. Guardar y esperar la URL que genera GitHub Pages.
-6. Abrir esa URL en Chrome Android y usar el menú del navegador > Instalar aplicación / Añadir a pantalla principal.
-
-IMPORTANTE:
-- Los datos se guardan localmente en el navegador/dispositivo. No hay sincronización ni copia de seguridad.
-- Esta versión es un prototipo inicial. Antes de un lanzamiento comercial, probar cálculos y compatibilidad en varios teléfonos.
-- Los ingresos, impuestos y comisiones reales pueden variar según país, actividad y medio de pago.
+IMPORTANTE
+Los datos siguen guardándose localmente en el navegador del dispositivo. No hay cuentas, sincronización en la nube ni servidor. Exportá copias de seguridad periódicas. La aplicación no emite facturas fiscales ni calcula impuestos.
